@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DocTailor — CV Tailoring for South African Job Seekers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --paper: #f5f0e8;
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --green: #1a3a2a;
+      --white: #ffffff;
+      --muted: #6b6355;
+      --border: #e0d8cc;
+      --relief: #1a3a2a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 6%;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--ink);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 2px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--gold); color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 6% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -150px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--gold-light) 0%, transparent 65%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-body {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 36px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: var(--white);
+      padding: 15px 28px;
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-1px); }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25d366;
+      color: #fff;
+      padding: 15px 28px;
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-1px); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 24px;
+      transition: transform 0.2s;
+    }
+
+    .stat-card:hover { transform: translateY(-3px); }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-number span { color: var(--gold); }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .stat-card.dark {
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .stat-card.dark .stat-number { color: var(--white); }
+    .stat-card.dark .stat-label { color: var(--gold-light); }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 6%; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-tag::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 60px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ── PAIN SECTION ── */
+    .pain { background: var(--ink); color: var(--white); }
+
+    .pain .section-tag { color: var(--gold); }
+    .pain .section-tag::after { background: #333; }
+    .pain h2 { color: var(--white); }
+    .pain .section-sub { color: #aaa; }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .pain-list { list-style: none; }
+
+    .pain-list li {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid #1f1f1f;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #ccc;
+    }
+
+    .pain-icon {
+      width: 32px; height: 32px;
+      background: #1a1a1a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .pain-answer {
+      background: var(--gold);
+      border-radius: 4px;
+      padding: 40px;
+      color: var(--ink);
+    }
+
+    .pain-answer h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .pain-answer p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #3a2e00;
+    }
+
+    /* ── WHAT WE DO ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+
+    .service-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .service-also {
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── VACANCIES ── */
+    .vacancy-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vacancy-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .vacancy-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+    }
+
+    .vacancy-card-cta {
+      background: var(--ink);
+      border-color: var(--ink);
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vacancy-card-cta::before { background: var(--gold); }
+
+    .vacancy-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .vacancy-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--gold-light);
+      color: #6b4c00;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .vacancy-date {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .vacancy-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .vacancy-company {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .vacancy-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .vacancy-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .vacancy-actions { margin-top: 8px; }
+
+    .vacancy-btn-primary {
+      display: block;
+      width: 100%;
+      padding: 13px 16px;
+      background: #25d366;
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .vacancy-btn-primary:hover { background: #1ebe5d; }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--ink); }
+    .pricing h2 { color: var(--white); }
+    .pricing .section-tag { color: var(--gold); }
+    .pricing .section-tag::after { background: #333; }
+    .pricing .section-sub { color: #999; }
+
+    .pricing-toggle {
+      display: inline-flex;
+      background: #1a1a1a;
+      border-radius: 3px;
+      padding: 4px;
+      margin: 40px 0 48px;
+      gap: 4px;
+    }
+
+    .toggle-btn {
+      padding: 10px 24px;
+      border-radius: 2px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #666;
+      transition: all 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .toggle-btn.active {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .pricing-tables {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .price-card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 4px;
+      padding: 32px 24px;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .price-card:hover { transform: translateY(-3px); }
+
+    .price-card.featured {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .price-card.featured .price-name { color: var(--ink); }
+    .price-card.featured .price-amount { color: var(--ink); }
+    .price-card.featured .price-desc { color: #3a2e00; }
+    .price-card.featured .price-includes li { color: #3a2e00; }
+    .price-card.featured .price-includes li::before { color: var(--ink); }
+
+    .featured-tag {
+      position: absolute;
+      top: -1px; right: 20px;
+      background: var(--ink);
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 0 0 3px 3px;
+    }
+
+    .price-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .price-period {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .price-card.featured .price-period { color: #5a4a00; }
+
+    .price-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.65;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #1f1f1f;
+    }
+
+    .price-card.featured .price-desc { border-color: #c49a3c; }
+
+    .price-includes {
+      list-style: none;
+    }
+
+    .price-includes li {
+      font-size: 13px;
+      color: #999;
+      padding: 6px 0;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .price-includes li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .relief-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--relief);
+      color: #7aff9a;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .relief-note {
+      background: #0d2018;
+      border: 1px solid #1a3a2a;
+      border-radius: 3px;
+      padding: 20px 24px;
+      margin-top: 32px;
+      font-size: 14px;
+      color: #7aff9a;
+      line-height: 1.7;
+    }
+
+    .relief-note strong { color: #fff; }
+
+    /* ── EXPLAIN SECTION ── */
+    .explain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 56px;
+    }
+
+    .explain-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px 32px;
+    }
+
+    .explain-q {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .explain-a {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--green); }
+    .how h2 { color: var(--white); }
+    .how .section-tag { color: #7aff9a; }
+    .how .section-tag::after { background: #2a4a3a; }
+    .how .section-sub { color: #9abba8; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-top: 60px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 10%; right: 10%;
+      height: 1px;
+      background: #2a4a3a;
+    }
+
+    .step {
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .step-desc {
+      font-size: 12px;
+      color: #9abba8;
+      line-height: 1.65;
+    }
+
+    /* ── TURNAROUND ── */
+    .turnaround-bar {
+      background: var(--gold);
+      padding: 28px 6%;
+      text-align: center;
+    }
+
+    .turnaround-bar p {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+
+    .turnaround-bar span {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .testi-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 32px 28px;
+    }
+
+    .testi-stars {
+      color: var(--gold);
+      font-size: 14px;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .testi-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testi-author {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .testi-role {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ── FORM ── */
+    .form-section { background: var(--ink); }
+    .form-section h2 { color: var(--white); }
+    .form-section .section-tag { color: var(--gold); }
+    .form-section .section-tag::after { background: #333; }
+    .form-section .section-sub { color: #999; }
+
+    .form-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      margin-top: 56px;
+      align-items: start;
+    }
+
+    .form-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .info-list { list-style: none; }
+
+    .info-list li {
+      display: flex;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 14px;
+      color: #999;
+      line-height: 1.65;
+    }
+
+    .info-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .form-box {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 4px;
+      padding: 40px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-radius: 2px;
+      padding: 13px 16px;
+      font-size: 14px;
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+    }
+
+    textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+    .upload-field {
+      width: 100%;
+      background: #0d0d0d;
+      border: 1.5px dashed #222;
+      border-radius: 2px;
+      padding: 24px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: block;
+      position: relative;
+    }
+
+    .upload-field:hover { border-color: var(--gold); }
+
+    .upload-field input {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%;
+    }
+
+    .upload-label-text {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .upload-label-text strong { color: var(--gold); display: block; font-size: 14px; margin-bottom: 4px; }
+
+    .services-check {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .svc-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-radius: 2px;
+      padding: 11px 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .svc-check input { display: none; }
+
+    .svc-check.checked {
+      border-color: var(--gold);
+      background: #1a1400;
+    }
+
+    .svc-check-box {
+      width: 16px; height: 16px;
+      border: 1.5px solid #333;
+      border-radius: 2px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+
+    .svc-check.checked .svc-check-box {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .svc-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #777;
+    }
+
+    .svc-check.checked .svc-name { color: var(--gold); }
+
+    .tier-select {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .tier-opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-radius: 2px;
+      padding: 13px 16px;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .tier-opt input { display: none; }
+
+    .tier-opt.selected {
+      border-color: var(--gold);
+      background: #1a1400;
+    }
+
+    .tier-radio {
+      width: 16px; height: 16px;
+      border: 1.5px solid #333;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+
+    .tier-opt.selected .tier-radio {
+      border-color: var(--gold);
+    }
+
+    .tier-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: none;
+    }
+
+    .tier-opt.selected .tier-dot { display: block; }
+
+    .tier-info { flex: 1; }
+
+    .tier-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #777;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .tier-opt.selected .tier-name { color: var(--gold); }
+
+    .tier-sub {
+      font-size: 10px;
+      color: #444;
+    }
+
+    .price-preview {
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+      border-radius: 2px;
+      padding: 16px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .price-preview-label {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .price-preview-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--gold);
+      color: var(--ink);
+      border: none;
+      border-radius: 2px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+    }
+
+    .submit-btn:hover { background: #e8c85c; transform: translateY(-1px); }
+
+    .form-note {
+      text-align: center;
+      font-size: 11px;
+      color: #444;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050505;
+      padding: 40px 6%;
+      border-top: 1px solid #111;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 11px;
+      color: #333;
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #111;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pricing-tables { grid-template-columns: 1fr 1fr; }
+      .explain-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .steps::before { display: none; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .form-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .pricing-tables { grid-template-columns: 1fr; }
+      .services-check { grid-template-columns: 1fr; }
+      .tier-select { grid-template-columns: 1fr; }
+    }
+
+    /* WhatsApp Float */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 56px; height: 56px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 200;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .wa-float:hover { transform: scale(1.1); }
+
+    .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* Success message */
+    .success-msg {
+      display: none;
+      background: #0d2018;
+      border: 1px solid #1a3a2a;
+      border-radius: 3px;
+      padding: 20px 24px;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #7aff9a;
+      text-align: center;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Doc<span>Tailor</span></div>
+  <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20would%20like%20to%20tailor%20my%20documents%20for%20a%20job%20application." target="_blank" class="nav-cta">Get Started</a>
+</nav>
+
+<!-- VACANCIES — FIRST THING PEOPLE SEE -->
+<section id="vacancies" style="background: var(--ink); padding: 120px 6% 80px;">
+  <div class="section-inner">
+
+    <div style="text-align:center; margin-bottom: 56px;">
+      <div class="hero-tag" style="justify-content:center;">🔥 Updated Daily — South Africa</div>
+      <h1 style="color: var(--white); font-size: clamp(36px, 6vw, 68px); margin-bottom: 20px;">
+        Find your next job.<br/><em style="color: var(--gold);">We handle the documents.</em>
+      </h1>
+      <p style="font-size: 16px; color: #999; max-width: 560px; margin: 0 auto 32px; line-height: 1.75;">
+        Browse real vacancies posted daily across South Africa. Find one you want, tap the button — we tailor your CV, Cover Letter and Application Email in under 4 hours.
+      </p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="#apply" style="padding: 14px 28px; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 13px; border-radius: 2px; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;">Submit Your Documents →</a>
+        <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20am%20looking%20for%20vacancies%20in%20my%20field." target="_blank" style="padding: 14px 28px; background: #25d366; color: #fff; font-weight: 800; font-size: 13px; border-radius: 2px; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;">Chat on WhatsApp</a>
+      </div>
+    </div>
+
+    <div id="vacancy-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+      <div id="vacancy-loading" style="grid-column:1/-1; text-align:center; padding:48px 0;">
+        <div style="width:36px;height:36px;border:3px solid #222;border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;"></div>
+        <div style="font-size:13px;color:#555;">Loading latest vacancies...</div>
+      </div>
+    </div>
+
+    <!-- Pitch strip -->
+    <div style="margin-top: 56px; background: #0d0d0d; border: 1px solid #1a1a1a; border-radius: 4px; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 8px;">Found a job you want?</div>
+        <div style="font-size: 14px; color: #777; line-height: 1.65;">We tailor your CV, Cover Letter and Application Email specifically for that role. Delivered in under 4 hours. Starting from R25.</div>
+      </div>
+      <a href="#apply" style="flex-shrink:0; padding: 15px 32px; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 13px; border-radius: 2px; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;">Get Started →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">South Africa's CV Tailoring Specialists</div>
+      <h1>Stop getting<br/>ignored.<br/><em>Get interviews.</em></h1>
+      <p class="hero-body">
+        You have the skills. You have the experience. But your CV is the same as everyone else's.
+        We tailor your documents to match exactly what each employer is looking for — so you get noticed, shortlisted and called.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20would%20like%20to%20tailor%20my%20documents%20for%20a%20job%20application." target="_blank" class="btn-primary">
+          <span>Tailor My Documents</span>
+          <span>→</span>
+        </a>
+        <a href="https://wa.me/27613845288" target="_blank" class="btn-whatsapp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card dark fade-up">
+        <div class="stat-number">10k<span>+</span></div>
+        <div class="stat-label">Documents Delivered</div>
+      </div>
+      <div class="stat-card fade-up" style="animation-delay:0.1s">
+        <div class="stat-number">2<span>–4</span></div>
+        <div class="stat-label">Hour Turnaround</div>
+      </div>
+      <div class="stat-card fade-up" style="animation-delay:0.2s">
+        <div class="stat-number">R<span>25</span></div>
+        <div class="stat-label">Starting Price</div>
+      </div>
+      <div class="stat-card dark fade-up" style="animation-delay:0.3s">
+        <div class="stat-number">3<span>x</span></div>
+        <div class="stat-label">More Interview Calls</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TURNAROUND BAR -->
+<div class="turnaround-bar">
+  <p><span>⏱ Turnaround Promise:</span> Submit before 3pm — receive your tailored documents by 6pm the same day. Business hours apply.</p>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain">
+  <div class="section-inner">
+    <div class="section-tag">The Problem</div>
+    <h2>Why good candidates<br/>get ignored</h2>
+    <p class="section-sub">It is not always about your experience. It is about how your documents communicate that experience to the right people.</p>
+    <div class="pain-grid fade-up">
+      <ul class="pain-list">
+        <li>
+          <div class="pain-icon">📋</div>
+          <div>You send the same CV to every job. Employers and ATS systems scan for specific words from their own advert. If those words are not in your CV, you are filtered out before a human ever reads it.</div>
+        </li>
+        <li>
+          <div class="pain-icon">✉️</div>
+          <div>Your cover letter is generic. "I am writing to apply for…" is how most letters start. Hiring managers have seen it a thousand times. Yours gets skipped.</div>
+        </li>
+        <li>
+          <div class="pain-icon">📧</div>
+          <div>Your application email says nothing. Most people paste "Please find attached my CV." The email itself is a first impression — and a missed opportunity.</div>
+        </li>
+        <li>
+          <div class="pain-icon">🔍</div>
+          <div>You do not know what to change. You know something is wrong but you do not know what. That uncertainty is exhausting and it stalls applications.</div>
+        </li>
+      </ul>
+      <div class="pain-answer">
+        <h3>Here is what we do about it.</h3>
+        <p>We take your CV and the job you are applying for, and we rewrite your documents to speak the exact language of that role. Every keyword. Every requirement. Every tone. Your experience stays true — we just present it in a way that gets you past the filter and onto the shortlist. It takes us hours. For you, it can change everything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE OFFER -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">Our Services</div>
+    <h2>Three documents.<br/>One application package.</h2>
+    <p class="section-sub">Not sure what each one is? We explain it plainly below. You choose what you need.</p>
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">CV Tailoring</div>
+        <p class="service-desc">Your CV is rewritten to match the specific job you are applying for. We use the same language as the job advert, highlight your most relevant experience, and structure it so it passes automated screening systems (ATS) and impresses human reviewers.</p>
+        <div class="service-also">What is ATS? — A computer system many companies use to filter CVs before a person reads them. If your CV does not match their keywords, it never reaches a human. We fix that.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Cover Letter</div>
+        <p class="service-desc">A cover letter is a short professional letter that introduces you before the employer reads your CV. Many roles require one. Even when they do not, a strong cover letter can be the reason you get the call. We write it in your voice, specifically for the role — no generic templates.</p>
+        <div class="service-also">Do I need one? — Always include one if you can. It gives you space to explain things a CV cannot. It shows you took the application seriously.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">Application Email</div>
+        <p class="service-desc">The email you send with your application is the first thing the recruiter reads — before they open a single attachment. Most people write two lines and wonder why no one responds. We write a short, purposeful email that sets the right tone and makes them want to open your documents.</p>
+        <div class="service-also">Why does this matter? — Because it is the first impression. A strong email signals professionalism before a single document is opened.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="section-inner">
+    <div class="section-tag">The Process</div>
+    <h2>Simple. Fast. Done.</h2>
+    <p class="section-sub">No back and forth. No complicated process. You submit, we tailor, you apply.</p>
+    <div class="steps fade-up">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Fill in the form</div>
+        <div class="step-desc">Upload your current CV and the job description. Tell us anything specific you want highlighted.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Choose your documents</div>
+        <div class="step-desc">Select CV, Cover Letter, Application Email — or all three. Pick your pricing tier.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">We get to work</div>
+        <div class="step-desc">Our team reviews your submission and tailors every document to the specific role.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Preview and approve</div>
+        <div class="step-desc">We send you a preview via WhatsApp. You approve, request changes, or confirm delivery.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-title">Pay and receive</div>
+        <div class="step-desc">Pay via eWallet once happy. We send your final documents as a PDF — ready to send.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-tag">Pricing</div>
+    <h2>Affordable for everyone<br/>applying in South Africa.</h2>
+    <p class="section-sub">Pay only after you see your preview and approve it. No upfront risk.</p>
+
+    <div class="pricing-toggle">
+      <button class="toggle-btn active" onclick="showTier('standard')">Standard Rate</button>
+      <button class="toggle-btn" onclick="showTier('relief')">Unemployed Relief</button>
+    </div>
+
+    <!-- Standard -->
+    <div id="tier-standard">
+      <div class="pricing-tables">
+        <div class="price-card">
+          <div class="price-name">Single Doc</div>
+          <div class="price-amount">R50</div>
+          <div class="price-period">per document</div>
+          <div class="price-desc">Any one document. CV, Cover Letter or Application Email.</div>
+          <ul class="price-includes">
+            <li>1 tailored document</li>
+            <li>ATS optimised</li>
+            <li>WhatsApp preview</li>
+            <li>PDF delivery</li>
+          </ul>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20want%20the%20Single%20Doc%20package%20at%20R50." target="_blank" style="display:block;margin-top:20px;padding:12px;background:#c9a84c;color:#000;text-align:center;font-weight:700;font-size:13px;border-radius:2px;text-decoration:none;">Get Started →</a>
+        </div>
+        <div class="price-card featured">
+          <div class="featured-tag">Best Value</div>
+          <div class="price-name">Any Two</div>
+          <div class="price-amount">R80</div>
+          <div class="price-period">save R20</div>
+          <div class="price-desc">Pick any two. Most applicants choose CV and Cover Letter.</div>
+          <ul class="price-includes">
+            <li>2 tailored documents</li>
+            <li>ATS optimised</li>
+            <li>WhatsApp preview</li>
+            <li>PDF delivery</li>
+          </ul>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20want%20the%20Any%20Two%20package%20at%20R80." target="_blank" style="display:block;margin-top:20px;padding:12px;background:#0a0a0a;color:#fff;text-align:center;font-weight:700;font-size:13px;border-radius:2px;text-decoration:none;">Get Started →</a>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Full Package</div>
+          <div class="price-amount">R100</div>
+          <div class="price-period">all three docs</div>
+          <div class="price-desc">Complete application package. CV, Cover Letter and Email.</div>
+          <ul class="price-includes">
+            <li>3 tailored documents</li>
+            <li>ATS optimised</li>
+            <li>WhatsApp preview</li>
+            <li>PDF delivery</li>
+          </ul>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20want%20the%20Full%20Package%20at%20R100." target="_blank" style="display:block;margin-top:20px;padding:12px;background:#c9a84c;color:#000;text-align:center;font-weight:700;font-size:13px;border-radius:2px;text-decoration:none;">Get Started →</a>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Monthly</div>
+          <div class="price-amount">R999</div>
+          <div class="price-period">per month</div>
+          <div class="price-desc">Apply as many times as you need. Unlimited tailoring for the full month.</div>
+          <ul class="price-includes">
+            <li>Unlimited submissions</li>
+            <li>Priority turnaround</li>
+            <li>All three doc types</li>
+            <li>Dedicated support</li>
+          </ul>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20am%20interested%20in%20the%20Monthly%20package%20at%20R999." target="_blank" style="display:block;margin-top:20px;padding:12px;background:#c9a84c;color:#000;text-align:center;font-weight:700;font-size:13px;border-radius:2px;text-decoration:none;">Get Started →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Relief Tier -->
+    <div id="tier-relief" style="display:none">
+      <div class="relief-badge">🤝 Unemployed Relief Rate</div>
+      <div class="pricing-tables">
+        <div class="price-card">
+          <div class="price-name">Single Doc</div>
+          <div class="price-amount" style="color:#7aff9a">R25</div>
+          <div class="price-period">per document</div>
+          <div class="price-desc">Any one document. CV, Cover Letter or Application Email.</div>
+          <ul class="price-includes">
+            <li>1 tailored document</li>
+            <li>ATS optimised</li>
+            <li>WhatsApp preview</li>
+            <li>PDF delivery</li>
+          </ul>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20want%20the%20Single%20Doc%20at%20the%20Unemployed%20Relief%20rate%20of%20R25." target="_blank" style="display:block;margin-top:20px;padding:12px;background:#c9a84c;color:#000;text-align:center;font-weight:700;font-size:13px;border-radius:2px;text-decoration:none;">Get Started →</a>
+        </div>
+        <div class="price-card featured">
+          <div class="featured-tag">Best Value</div>
+          <div class="price-name">Any Two</div>
+          <div class="price-amount">R45</div>
+          <div class="price-period">save R5</div>
+          <div class="price-desc">Pick any two. Most applicants choose CV and Cover Letter.</div>
+          <ul class="price-includes">
+            <li>2 tailored documents</li>
+            <li>ATS optimised</li>
+            <li>WhatsApp preview</li>
+            <li>PDF delivery</li>
+          </ul>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20want%20the%20Any%20Two%20package%20at%20the%20Unemployed%20Relief%20rate%20of%20R45." target="_blank" style="display:block;margin-top:20px;padding:12px;background:#0a0a0a;color:#fff;text-align:center;font-weight:700;font-size:13px;border-radius:2px;text-decoration:none;">Get Started →</a>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Full Package</div>
+          <div class="price-amount" style="color:#7aff9a">R70</div>
+          <div class="price-period">all three docs</div>
+          <div class="price-desc">Complete application package. CV, Cover Letter and Email.</div>
+          <ul class="price-includes">
+            <li>3 tailored documents</li>
+            <li>ATS optimised</li>
+            <li>WhatsApp preview</li>
+            <li>PDF delivery</li>
+          </ul>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20want%20the%20Full%20Package%20at%20the%20Unemployed%20Relief%20rate%20of%20R70." target="_blank" style="display:block;margin-top:20px;padding:12px;background:#c9a84c;color:#000;text-align:center;font-weight:700;font-size:13px;border-radius:2px;text-decoration:none;">Get Started →</a>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Monthly</div>
+          <div class="price-amount" style="color:#7aff9a">R599</div>
+          <div class="price-period">per month</div>
+          <div class="price-desc">Unlimited tailoring. For those applying seriously every week.</div>
+          <ul class="price-includes">
+            <li>Unlimited submissions</li>
+            <li>Priority turnaround</li>
+            <li>All three doc types</li>
+            <li>Dedicated support</li>
+          </ul>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20am%20interested%20in%20the%20Monthly%20package%20at%20the%20Unemployed%20Relief%20rate%20of%20R599." target="_blank" style="display:block;margin-top:20px;padding:12px;background:#c9a84c;color:#000;text-align:center;font-weight:700;font-size:13px;border-radius:2px;text-decoration:none;">Get Started →</a>
+        </div>
+      </div>
+      <div class="relief-note">
+        <strong>For unemployed job seekers and students.</strong> No proof required — we trust you. This rate exists because we believe cost should never be the reason someone misses a job opportunity. If you are currently employed and choose this rate, that is your call. We still deliver the same quality.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ / EXPLAIN -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">Good to Know</div>
+    <h2>Questions we get asked<br/>all the time.</h2>
+    <div class="explain-grid fade-up">
+      <div class="explain-card">
+        <div class="explain-q">What is ATS and why does it matter?</div>
+        <div class="explain-a">ATS stands for Applicant Tracking System. Many medium and large companies use it to automatically scan CVs before a human ever reads them. It filters out any CV that does not contain the right keywords from the job advert. If your CV is not tailored, it often gets rejected automatically — not because you are not qualified, but because the system did not see the right words.</div>
+      </div>
+      <div class="explain-card">
+        <div class="explain-q">Do you change my actual experience or qualifications?</div>
+        <div class="explain-a">Never. We do not invent experience or exaggerate qualifications. What we do is reframe and reword what you already have, so it is presented in the language the employer used in their job advert. Your facts stay yours. We just make sure they land.</div>
+      </div>
+      <div class="explain-card">
+        <div class="explain-q">What format will I receive my documents in?</div>
+        <div class="explain-a">You will receive your final documents as a PDF file, sent via WhatsApp or email. PDFs are the safest format for applications because they preserve the formatting regardless of what device or software the employer uses to open them.</div>
+      </div>
+      <div class="explain-card">
+        <div class="explain-q">When do I pay?</div>
+        <div class="explain-a">You pay after you have seen the preview and you are happy with the work. We send you a screenshot via WhatsApp first. Once you approve, you pay via eWallet and we deliver the final PDF. No upfront payment required for your first order.</div>
+      </div>
+      <div class="explain-card">
+        <div class="explain-q">Is my personal information safe?</div>
+        <div class="explain-a">Yes. Your documents are used only to complete your tailoring request and are not stored, shared or sold. We operate in line with the Protection of Personal Information Act (POPIA). Your data is handled with full confidentiality.</div>
+      </div>
+      <div class="explain-card">
+        <div class="explain-q">What if I am not happy with the result?</div>
+        <div class="explain-a">You preview before you pay. If something does not feel right, tell us via WhatsApp and we will revise it. We want you to walk away confident about your application — not uncertain. Your satisfaction is what builds our reputation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background: var(--ink); padding-top: 80px; padding-bottom: 80px;">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--gold)">What Clients Say</div>
+    <h2 style="color:white">Real people.<br/>Real results.</h2>
+    <div class="testi-grid fade-up">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I had been applying for three months with no response. After DocTailor rewrote my CV for one specific role at Nedbank, I got a call within two days. I could not believe the difference."</p>
+        <div class="testi-author">Thandi M.</div>
+        <div class="testi-role">Finance Administrator, Johannesburg</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"As a student I was worried about the cost. The relief rate made it possible for me. My tailored cover letter for my internship application was better than anything I could have written. Got the interview."</p>
+        <div class="testi-author">Sipho K.</div>
+        <div class="testi-role">Final Year Student, Pretoria</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I never thought about my application email until DocTailor pointed it out. That single document change made my submission look more professional than anything I had sent before. Worth every rand."</p>
+        <div class="testi-author">Lerato D.</div>
+        <div class="testi-role">Operations Coordinator, Sandton</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="apply">
+  <div class="section-inner">
+    <div class="section-tag">Get Started</div>
+    <h2>Submit your application.<br/>We handle the rest.</h2>
+    <p class="section-sub">Fill in the form below. We will review your documents, tailor everything and send you a preview via WhatsApp before you pay a cent.</p>
+
+    <div class="form-wrap">
+      <div class="form-info fade-up">
+        <h3>What happens after you submit?</h3>
+        <ul class="info-list">
+          <li>
+            <span class="info-icon">📲</span>
+            <span>We message you on WhatsApp within minutes. Reply with your CV and the job description as attachments.</span>
+          </li>
+          <li>
+            <span class="info-icon">⚙️</span>
+            <span>Our team gets to work immediately — tailoring every document you selected to match that specific role.</span>
+          </li>
+          <li>
+            <span class="info-icon">👀</span>
+            <span>We send you a WhatsApp preview. Approve it, request changes, or ask questions — no pressure.</span>
+          </li>
+          <li>
+            <span class="info-icon">💳</span>
+            <span>Once you are happy, pay via eWallet. Amount depends on your selected package and tier.</span>
+          </li>
+          <li>
+            <span class="info-icon">📄</span>
+            <span>We deliver your final documents as a PDF via WhatsApp or email. Ready to send to the employer.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-box fade-up">
+        <form id="mainForm" onsubmit="handleSubmit(event)">
+
+          <div class="form-row">
+            <div class="field">
+              <label>Full Name *</label>
+              <input type="text" name="full_name" placeholder="Your full name" required />
+            </div>
+            <div class="field">
+              <label>WhatsApp Number *</label>
+              <input type="tel" name="whatsapp_number" placeholder="+27 6X XXX XXXX" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="For PDF delivery (optional)" />
+          </div>
+
+          <div style="background:#0d2018; border:1px solid #1a3a2a; border-radius:3px; padding:16px 18px; margin-bottom:20px; display:flex; gap:12px; align-items:flex-start;">
+            <span style="font-size:20px; flex-shrink:0;">📲</span>
+            <div>
+              <div style="font-size:13px; font-weight:700; color:#7aff9a; margin-bottom:4px;">Send your documents on WhatsApp</div>
+              <div style="font-size:12px; color:#9abba8; line-height:1.65;">After submitting this form we will message you on WhatsApp. Simply reply with your CV and the job description as attachments. We take it from there.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>What documents do you need? *</label>
+            <div class="services-check">
+              <label class="svc-check" id="svc-cv" onclick="toggleSvc('svc-cv')">
+                <input type="checkbox" name="service_cv" value="CV Tailoring" />
+                <div class="svc-check-box">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#000" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="svc-name">CV</span>
+              </label>
+              <label class="svc-check" id="svc-cl" onclick="toggleSvc('svc-cl')">
+                <input type="checkbox" name="service_cover_letter" value="Cover Letter" />
+                <div class="svc-check-box">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#000" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="svc-name">Cover Letter</span>
+              </label>
+              <label class="svc-check" id="svc-em" onclick="toggleSvc('svc-em')">
+                <input type="checkbox" name="service_email" value="Application Email" />
+                <div class="svc-check-box">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#000" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="svc-name">App Email</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Pricing Tier *</label>
+            <div class="tier-select">
+              <div class="tier-opt selected" id="tier-std" onclick="selectTier('standard')">
+                <div class="tier-radio"><div class="tier-dot"></div></div>
+                <div class="tier-info">
+                  <div class="tier-name">Standard Rate</div>
+                  <div class="tier-sub">General pricing</div>
+                </div>
+              </div>
+              <div class="tier-opt" id="tier-rel" onclick="selectTier('relief')">
+                <div class="tier-radio"><div class="tier-dot"></div></div>
+                <div class="tier-info">
+                  <div class="tier-name">Unemployed Relief</div>
+                  <div class="tier-sub">No proof required</div>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" name="pricing_tier" id="pricingTierInput" value="Standard Rate" />
+          </div>
+
+          <div class="price-preview">
+            <span class="price-preview-label">Estimated price for your selection</span>
+            <span class="price-preview-amount" id="priceDisplay">R —</span>
+          </div>
+          <input type="hidden" name="estimated_price" id="estimatedPriceInput" value="" />
+
+          <div class="field">
+            <label>Tell us how you want to come across *</label>
+            <textarea name="preferences" placeholder="Example: I am applying for a senior admin role and want to emphasise my government experience. I prefer a formal and confident tone. Please highlight my PFMA compliance background and my work at the Department of Defence." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">Submit My Application →</button>
+          <p class="form-note">You will receive a WhatsApp message from us within 2 to 4 hours during business hours (Mon to Fri, 8am to 6pm). Payment only after you approve your preview.</p>
+        </form>
+        <div class="success-msg" id="successMsg">
+          ✅ Submission received! We will message you on WhatsApp shortly — please have your CV and the job description ready to send as attachments. We will take it from there and get your documents tailored within 2 to 4 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Doc<span>Tailor</span></div>
+    <div class="footer-links">
+      <a href="#vacancies">Vacancies</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20would%20like%20to%20tailor%20my%20documents%20for%20a%20job%20application." target="_blank">Get Started</a>
+      <a href="https://wa.me/27613845288" target="_blank">WhatsApp</a>
+    </div>
+    <div class="footer-copy">
+      © 2025 DocTailor. All rights reserved. · Your documents are handled in line with POPIA. We do not store, share or sell your personal information. · Johannesburg, South Africa.
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/27613845288" class="wa-float" target="_blank" title="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // ── GOOGLE SHEETS VACANCY LOADER ──
+  // STEP: Replace YOUR_SHEET_ID below with your actual Google Sheet ID
+  // The Sheet ID is in the URL: docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit
+  const SHEET_ID = '1YyDxelzGtcyrjN7ursCk0TSfIGYHvpRdOSEJB22HH9g';
+  const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
+
+  // CTA card always shown at the end
+  const ctaCard = `
+    <div class="vacancy-card vacancy-card-cta">
+      <div style="font-size:36px;margin-bottom:16px;">📬</div>
+      <div class="vacancy-title" style="color:var(--gold);">More vacancies added daily</div>
+      <p style="font-size:13px;color:#999;line-height:1.7;margin:12px 0 20px;">New opportunities posted every day from across South Africa. Tell us what field you are in and we will look out for you.</p>
+      <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20am%20looking%20for%20vacancies%20in%20my%20field.%20Can%20you%20help%3F" target="_blank" class="vacancy-btn-primary">Tell Us What You Are Looking For</a>
+    </div>`;
+
+  function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim().toLowerCase());
+    return lines.slice(1).map(line => {
+      const values = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        if (line[i] === '"') { inQuotes = !inQuotes; continue; }
+        if (line[i] === ',' && !inQuotes) { values.push(current.trim()); current = ''; continue; }
+        current += line[i];
+      }
+      values.push(current.trim());
+      const row = {};
+      headers.forEach((h, i) => row[h] = values[i] || '');
+      return row;
+    }).filter(r => r.title && r.title.trim() !== '');
+  }
+
+  function buildCard(v) {
+    const waText = encodeURIComponent(`Hi DocTailor, I want to apply for the ${v.title} role at ${v.company}. Please help me tailor my documents.`);
+    const linkBtn = v.link && v.link.trim()
+      ? `<a href="${v.link}" target="_blank" style="display:block;padding:10px;background:#222;color:#aaa;text-align:center;font-size:12px;font-weight:600;border-radius:2px;text-decoration:none;margin-bottom:8px;">View Full Advert ↗</a>`
+      : '';
+    return `
+      <div class="vacancy-card" style="background:#111;border-color:#222;">
+        <div class="vacancy-top">
+          <div class="vacancy-badge">${v.category || 'General'}</div>
+          <div class="vacancy-date" style="color:#555;">${v.date || ''}</div>
+        </div>
+        <div class="vacancy-title" style="color:#fff;">${v.title}</div>
+        <div class="vacancy-company">${v.company || ''}</div>
+        <div class="vacancy-meta" style="color:#666;">
+          <span>📍 ${v.location || 'South Africa'}</span>
+          <span>🕐 ${v.type || 'Full Time'}</span>
+        </div>
+        <div class="vacancy-desc" style="color:#888;">${v.description || ''}</div>
+        <div class="vacancy-actions" style="margin-top:auto;">
+          ${linkBtn}
+          <a href="https://wa.me/27613845288?text=${waText}" target="_blank" class="vacancy-btn-primary">Tailor My CV for This Job</a>
+        </div>
+      </div>`;
+  }
+
+  async function loadVacancies() {
+    const grid = document.getElementById('vacancy-grid');
+    try {
+      const res = await fetch(SHEET_URL);
+      if (!res.ok) throw new Error('fetch failed');
+      const text = await res.text();
+      const vacancies = parseCSV(text);
+      if (vacancies.length === 0) throw new Error('empty');
+      grid.innerHTML = vacancies.map(buildCard).join('') + ctaCard;
+    } catch (e) {
+      // Fallback — show sample cards if sheet not connected yet
+      grid.innerHTML = `
+        <div class="vacancy-card" style="background:#111;border-color:#222;">
+          <div class="vacancy-top"><div class="vacancy-badge">Admin</div><div class="vacancy-date" style="color:#555;">11 Mar 2026</div></div>
+          <div class="vacancy-title" style="color:#fff;">Administrative Officer</div>
+          <div class="vacancy-company">City of Tshwane</div>
+          <div class="vacancy-meta" style="color:#666;"><span>📍 Pretoria</span><span>🕐 Full Time</span></div>
+          <div class="vacancy-desc" style="color:#888;">General office administration and support to senior management. Minimum 2 years experience required.</div>
+          <div class="vacancy-actions"><a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20want%20to%20apply%20for%20the%20Administrative%20Officer%20role.%20Please%20help%20me%20tailor%20my%20documents." target="_blank" class="vacancy-btn-primary">Tailor My CV for This Job</a></div>
+        </div>
+        <div class="vacancy-card" style="background:#111;border-color:#222;">
+          <div class="vacancy-top"><div class="vacancy-badge">Finance</div><div class="vacancy-date" style="color:#555;">11 Mar 2026</div></div>
+          <div class="vacancy-title" style="color:#fff;">Finance Administrator</div>
+          <div class="vacancy-company">Department of Health</div>
+          <div class="vacancy-meta" style="color:#666;"><span>📍 Johannesburg</span><span>🕐 Full Time</span></div>
+          <div class="vacancy-desc" style="color:#888;">Financial reporting, budget monitoring and general administrative support within the Finance department.</div>
+          <div class="vacancy-actions"><a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20want%20to%20apply%20for%20the%20Finance%20Administrator%20role.%20Please%20help%20me%20tailor%20my%20documents." target="_blank" class="vacancy-btn-primary">Tailor My CV for This Job</a></div>
+        </div>
+        ${ctaCard}`;
+    }
+  }
+
+  loadVacancies();
+
+  // ── PRICING LOGIC ──
+  // 1. Go to formspree.io and sign up (free)
+  // 2. Click "New Form", name it "DocTailor Submissions"
+  // 3. Copy the form ID (looks like: xyzabcde)
+  // 4. Replace YOUR_FORM_ID below with that ID
+  const FORMSPREE_ID = 'xlgpjage';
+
+  // Pricing logic
+  const PRICES = {
+    standard: { 1: 50, 2: 80, 3: 100 },
+    relief:   { 1: 25, 2: 45, 3: 70  }
+  };
+
+  let selectedTier = 'standard';
+  let selectedSvcs = new Set();
+
+  function toggleSvc(id) {
+    const el = document.getElementById(id);
+    if (selectedSvcs.has(id)) {
+      selectedSvcs.delete(id);
+      el.classList.remove('checked');
+    } else {
+      selectedSvcs.add(id);
+      el.classList.add('checked');
+    }
+    updatePrice();
+  }
+
+  function selectTier(tier) {
+    selectedTier = tier;
+    document.getElementById('tier-std').classList.toggle('selected', tier === 'standard');
+    document.getElementById('tier-rel').classList.toggle('selected', tier === 'relief');
+    document.getElementById('pricingTierInput').value = tier === 'standard' ? 'Standard Rate' : 'Unemployed Relief Rate';
+    updatePrice();
+  }
+
+  function updatePrice() {
+    const count = selectedSvcs.size;
+    if (count === 0) {
+      document.getElementById('priceDisplay').textContent = 'R —';
+      document.getElementById('estimatedPriceInput').value = '';
+      return;
+    }
+    const price = PRICES[selectedTier][count] || PRICES[selectedTier][3];
+    document.getElementById('priceDisplay').textContent = 'R' + price;
+    document.getElementById('estimatedPriceInput').value = 'R' + price;
+  }
+
+  // Tier toggle on pricing section
+  function showTier(tier) {
+    document.getElementById('tier-standard').style.display = tier === 'standard' ? 'block' : 'none';
+    document.getElementById('tier-relief').style.display = tier === 'relief' ? 'block' : 'none';
+    document.querySelectorAll('.toggle-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (i === 0 && tier === 'standard') || (i === 1 && tier === 'relief'));
+    });
+  }
+
+  // File upload label update
+  function fileChosen(input, labelId, nameId) {
+    if (input.files && input.files[0]) {
+      document.getElementById(nameId).innerHTML = '<strong style="color:var(--gold)">' + input.files[0].name + '</strong>File ready to submit';
+      document.getElementById(labelId).style.borderColor = 'var(--gold)';
+    }
+  }
+
+  // Form submit — sends to Formspree via AJAX
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const form = document.getElementById('mainForm');
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        const msg = document.getElementById('successMsg');
+        msg.style.display = 'block';
+        window.scrollTo({ top: msg.offsetTop - 100, behavior: 'smooth' });
+      } else {
+        btn.textContent = 'Submit My Application →';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or contact us on WhatsApp.');
+      }
+    } catch (err) {
+      btn.textContent = 'Submit My Application →';
+      btn.disabled = false;
+      alert('Could not connect. Please check your internet and try again.');
+    }
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) el.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
