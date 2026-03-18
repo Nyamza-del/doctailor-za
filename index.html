@@ -488,6 +488,145 @@
 
     .vacancy-btn-primary:hover { background: #1ebe5d; }
 
+    /* ── BOARD TABS ── */
+    .board-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .board-tab {
+      padding: 12px 28px;
+      border-radius: 2px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid #2a2a2a;
+      background: transparent;
+      color: #555;
+      transition: all 0.2s;
+    }
+
+    .board-tab.active-jobs {
+      background: var(--gold);
+      color: var(--ink);
+      border-color: var(--gold);
+    }
+
+    .board-tab.active-courses {
+      background: #1a3a5a;
+      color: #7ad4ff;
+      border-color: #2a5a8a;
+    }
+
+    /* ── COURSE CARDS ── */
+    .course-card {
+      background: #0d1520;
+      border: 1px solid #1a2a3a;
+      border-radius: 4px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .course-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: #7ad4ff;
+    }
+
+    .course-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .course-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      background: #1a2a3a;
+      color: #7ad4ff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+
+    .course-free-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      background: #0a1a0a;
+      color: #7aff9a;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      margin-left: 6px;
+    }
+
+    .course-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .course-provider {
+      font-size: 13px;
+      font-weight: 600;
+      color: #7ad4ff;
+      margin-bottom: 10px;
+    }
+
+    .course-meta {
+      display: flex;
+      gap: 14px;
+      font-size: 11px;
+      color: #3a4a5a;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .course-desc {
+      font-size: 12px;
+      color: #4a5a6a;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .course-btn {
+      display: block;
+      padding: 11px 16px;
+      background: #1a3a5a;
+      color: #7ad4ff;
+      border: 1px solid #2a5a8a;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+      margin-top: auto;
+    }
+
+    .course-btn:hover { background: #2a4a6a; }
+
     /* ── PRICING ── */
     .pricing { background: var(--ink); }
     .pricing h2 { color: var(--white); }
@@ -1209,17 +1348,17 @@
   <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20would%20like%20to%20tailor%20my%20documents%20for%20a%20job%20application." target="_blank" class="nav-cta">Get Started</a>
 </nav>
 
-<!-- VACANCIES — FIRST THING PEOPLE SEE -->
+<!-- VACANCIES + COURSES — FIRST THING PEOPLE SEE -->
 <section id="vacancies" style="background: var(--ink); padding: 120px 6% 80px;">
   <div class="section-inner">
 
-    <div style="text-align:center; margin-bottom: 56px;">
+    <div style="text-align:center; margin-bottom: 48px;">
       <div class="hero-tag" style="justify-content:center;">🔥 Updated Daily — South Africa</div>
       <h1 style="color: var(--white); font-size: clamp(36px, 6vw, 68px); margin-bottom: 20px;">
         Find your next job.<br/><em style="color: var(--gold);">We handle the documents.</em>
       </h1>
       <p style="font-size: 16px; color: #999; max-width: 560px; margin: 0 auto 32px; line-height: 1.75;">
-        Browse real vacancies posted daily across South Africa. Find one you want, tap the button — we tailor your CV, Cover Letter and Application Email in under 4 hours.
+        Browse real vacancies and free courses posted daily across South Africa. Find a job you want or a skill to build — we help you get there.
       </p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
         <a href="#apply" style="padding: 14px 28px; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 13px; border-radius: 2px; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;">Submit Your Documents →</a>
@@ -1227,20 +1366,46 @@
       </div>
     </div>
 
-    <div id="vacancy-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
-      <div id="vacancy-loading" style="grid-column:1/-1; text-align:center; padding:48px 0;">
-        <div style="width:36px;height:36px;border:3px solid #222;border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;"></div>
-        <div style="font-size:13px;color:#555;">Loading latest vacancies...</div>
+    <!-- TAB SWITCHER -->
+    <div class="board-tabs">
+      <button class="board-tab active-jobs" id="tab-jobs" onclick="switchBoard('jobs')">💼 Jobs Board</button>
+      <button class="board-tab" id="tab-courses" onclick="switchBoard('courses')">🎓 Courses Board</button>
+    </div>
+
+    <!-- JOBS GRID -->
+    <div id="board-jobs">
+      <div id="vacancy-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        <div id="vacancy-loading" style="grid-column:1/-1; text-align:center; padding:48px 0;">
+          <div style="width:36px;height:36px;border:3px solid #222;border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;"></div>
+          <div style="font-size:13px;color:#555;">Loading latest vacancies...</div>
+        </div>
+      </div>
+      <!-- Pitch strip -->
+      <div style="margin-top: 40px; background: #0d0d0d; border: 1px solid #1a1a1a; border-radius: 4px; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+        <div>
+          <div style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 8px;">Found a job you want?</div>
+          <div style="font-size: 14px; color: #777; line-height: 1.65;">We tailor your CV, Cover Letter and Application Email specifically for that role. Delivered in under 4 hours. Starting from R50.</div>
+        </div>
+        <a href="#apply" style="flex-shrink:0; padding: 15px 32px; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 13px; border-radius: 2px; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;">Get Started →</a>
       </div>
     </div>
 
-    <!-- Pitch strip -->
-    <div style="margin-top: 56px; background: #0d0d0d; border: 1px solid #1a1a1a; border-radius: 4px; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-      <div>
-        <div style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 8px;">Found a job you want?</div>
-        <div style="font-size: 14px; color: #777; line-height: 1.65;">We tailor your CV, Cover Letter and Application Email specifically for that role. Delivered in under 4 hours. Starting from R50.</div>
+    <!-- COURSES GRID -->
+    <div id="board-courses" style="display:none;">
+      <div id="course-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        <div id="course-loading" style="grid-column:1/-1; text-align:center; padding:48px 0;">
+          <div style="width:36px;height:36px;border:3px solid #1a2a3a;border-top-color:#7ad4ff;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;"></div>
+          <div style="font-size:13px;color:#555;">Loading courses...</div>
+        </div>
       </div>
-      <a href="#apply" style="flex-shrink:0; padding: 15px 32px; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 13px; border-radius: 2px; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;">Get Started →</a>
+      <!-- Courses pitch strip -->
+      <div style="margin-top: 40px; background: #0a1520; border: 1px solid #1a3a5a; border-radius: 4px; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+        <div>
+          <div style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 8px;">Completed a course?</div>
+          <div style="font-size: 14px; color: #555; line-height: 1.65;">Add it to your CV properly. We update your CV to include your new qualification and tailor it for roles that value that skill. From R50.</div>
+        </div>
+        <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20just%20completed%20a%20course%20and%20want%20to%20update%20my%20CV." target="_blank" style="flex-shrink:0; padding: 15px 32px; background: #1a3a5a; color: #7ad4ff; border: 1px solid #2a5a8a; font-weight: 800; font-size: 13px; border-radius: 2px; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;">Update My CV →</a>
+      </div>
     </div>
 
   </div>
@@ -1392,26 +1557,56 @@
 <section>
   <div class="section-inner">
     <div class="section-tag">Our Services</div>
-    <h2>Three documents.<br/>One application package.</h2>
-    <p class="section-sub">Not sure what each one is? We explain it plainly below. You choose what you need.</p>
+    <h2>Everything you need<br/>to get hired.</h2>
+    <p class="section-sub">From building your CV from scratch to finding the right jobs and preparing you for the interview. You choose what you need — we handle it.</p>
     <div class="services-grid fade-up">
       <div class="service-card">
         <div class="service-num">01</div>
-        <div class="service-title">CV Tailoring</div>
+        <div class="service-title">CV Tailoring <span style="font-size:13px;color:var(--gold);font-weight:600;">— R50</span></div>
         <p class="service-desc">Your CV is rewritten to match the specific job you are applying for. We use the same language as the job advert, highlight your most relevant experience, and structure it so it passes automated screening systems (ATS) and impresses human reviewers.</p>
         <div class="service-also">What is ATS? — A computer system many companies use to filter CVs before a person reads them. If your CV does not match their keywords, it never reaches a human. We fix that.</div>
       </div>
       <div class="service-card">
         <div class="service-num">02</div>
-        <div class="service-title">Cover Letter</div>
+        <div class="service-title">Cover Letter <span style="font-size:13px;color:var(--gold);font-weight:600;">— R50</span></div>
         <p class="service-desc">A cover letter is a short professional letter that introduces you before the employer reads your CV. Many roles require one. Even when they do not, a strong cover letter can be the reason you get the call. We write it in your voice, specifically for the role — no generic templates.</p>
         <div class="service-also">Do I need one? — Always include one if you can. It gives you space to explain things a CV cannot. It shows you took the application seriously.</div>
       </div>
       <div class="service-card">
         <div class="service-num">03</div>
-        <div class="service-title">Application Email</div>
+        <div class="service-title">Application Email <span style="font-size:13px;color:var(--gold);font-weight:600;">— R50</span></div>
         <p class="service-desc">The email you send with your application is the first thing the recruiter reads — before they open a single attachment. Most people write two lines and wonder why no one responds. We write a short, purposeful email that sets the right tone and makes them want to open your documents.</p>
         <div class="service-also">Why does this matter? — Because it is the first impression. A strong email signals professionalism before a single document is opened.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">CV Built from Scratch <span style="font-size:13px;color:var(--gold);font-weight:600;">— R150</span></div>
+        <p class="service-desc">No CV at all? No problem. We ask you a few questions about your work history, education and skills then build a complete professional CV from the ground up. Formatted, ATS-optimised and ready to tailor for any role you apply for.</p>
+        <div class="service-also">Who is this for? — Anyone entering the job market for the first time, returning after a break, or whose current CV is too outdated to salvage.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-title">Vacancy Matching <span style="font-size:13px;color:var(--gold);font-weight:600;">— R50</span></div>
+        <p class="service-desc">Not sure where to apply? Send us your CV and we identify 3 to 5 active job openings that genuinely match your experience and skills. We send you the listings with a short note on why each role suits you — saving you hours of searching on your own.</p>
+        <div class="service-also">Bundle it — Vacancy Matching + CV Tailoring for one role: R80. Vacancy Matching + Full package: R130.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-title">LinkedIn Profile Optimisation <span style="font-size:13px;color:var(--gold);font-weight:600;">— R150</span></div>
+        <p class="service-desc">Recruiters search LinkedIn every day. If your profile is incomplete or generic, you are invisible to them. We rewrite your headline, About section and Experience descriptions to position you professionally and attract the right opportunities.</p>
+        <div class="service-also">Did you know? — Over 70% of recruiters in South Africa check LinkedIn before calling a candidate. Your profile is your digital CV.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">07</div>
+        <div class="service-title">Interview Preparation Pack <span style="font-size:13px;color:var(--gold);font-weight:600;">— R100</span></div>
+        <p class="service-desc">A personalised document with likely interview questions for your specific role, suggested answers based on your actual CV and experience, and practical tips on what that employer typically looks for. Walk into the room prepared, not guessing.</p>
+        <div class="service-also">Why does this matter? — Getting the interview is half the battle. Winning it requires preparation. Most candidates improvise. You will not have to.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">08</div>
+        <div class="service-title">CV Review and Feedback <span style="font-size:13px;color:var(--gold);font-weight:600;">— R30</span></div>
+        <p class="service-desc">Already have a CV but not sure if it is working? We review it and send you a clear written breakdown of what is strong, what is hurting your chances, and exactly what to fix. The lowest barrier way to start improving your applications today.</p>
+        <div class="service-also">Not ready to commit? — Start here. R30 gets you professional eyes on your CV and a clear action plan. Most clients upgrade to full tailoring after seeing the feedback.</div>
       </div>
     </div>
   </div>
@@ -1808,8 +2003,8 @@
   // STEP: Replace YOUR_SHEET_ID below with your actual Google Sheet ID
   // The Sheet ID is in the URL: docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit
   const SHEET_ID = '1YyDxelzGtcyrjN7ursCk0TSfIGYHvpRdOSEJB22HH9g';
-  const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
-  const SHEET_URL = `https://api.allorigins.win/raw?url=${encodeURIComponent(CSV_URL)}`;
+  const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0&t=${Date.now()}`;
+  const SHEET_URL = `https://api.allorigins.win/raw?url=${encodeURIComponent(CSV_URL)}&t=${Date.now()}`;
 
   // CTA card always shown at the end
   const ctaCard = `
@@ -1897,6 +2092,106 @@
   }
 
   loadVacancies();
+
+  // ── BOARD TAB SWITCHING ──
+  function switchBoard(board) {
+    const jobsEl = document.getElementById('board-jobs');
+    const coursesEl = document.getElementById('board-courses');
+    const tabJobs = document.getElementById('tab-jobs');
+    const tabCourses = document.getElementById('tab-courses');
+
+    if (board === 'jobs') {
+      jobsEl.style.display = 'block';
+      coursesEl.style.display = 'none';
+      tabJobs.className = 'board-tab active-jobs';
+      tabCourses.className = 'board-tab';
+    } else {
+      jobsEl.style.display = 'none';
+      coursesEl.style.display = 'block';
+      tabJobs.className = 'board-tab';
+      tabCourses.className = 'board-tab active-courses';
+      if (!coursesLoaded) loadCourses();
+    }
+  }
+
+  // ── GOOGLE SHEETS COURSES LOADER ──
+  // Add a second sheet named "DocTailor Courses" in the same spreadsheet
+  // Columns: TITLE | PROVIDER | CATEGORY | DURATION | COST | LEVEL | DESCRIPTION | LINK
+  const COURSES_SHEET_ID = '1YyDxelzGtcyrjN7ursCk0TSfIGYHvpRdOSEJB22HH9g';
+  const COURSES_GID = '1'; // Change this to your courses sheet tab GID
+  const COURSES_CSV = `https://docs.google.com/spreadsheets/d/${COURSES_SHEET_ID}/export?format=csv&gid=${COURSES_GID}&t=${Date.now()}`;
+  const COURSES_URL = `https://api.allorigins.win/raw?url=${encodeURIComponent(COURSES_CSV)}&t=${Date.now()}`;
+  let coursesLoaded = false;
+
+  const courseCtaCard = `
+    <div class="course-card" style="text-align:center; justify-content:center; align-items:center;">
+      <div style="font-size:36px;margin-bottom:16px;">📚</div>
+      <div class="course-title" style="color:#7ad4ff;">More courses added daily</div>
+      <p style="font-size:13px;color:#3a4a5a;line-height:1.7;margin:12px 0 20px;">Free and affordable courses from SETA, NSG, Alison, UNISA and more. Tell us what skill you want to build.</p>
+      <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20am%20looking%20for%20courses%20to%20improve%20my%20skills.%20Can%20you%20help%3F" target="_blank" class="course-btn">Tell Us What You Want to Learn</a>
+    </div>`;
+
+  function buildCourseCard(c) {
+    const cost = (c.cost || '').toLowerCase();
+    const isFree = cost === 'free' || cost === '' || cost === '0' || cost === 'r0';
+    const freeBadge = isFree ? '<span class="course-free-badge">FREE</span>' : '';
+    const costLabel = isFree ? 'Free' : (c.cost || 'Free');
+    const linkBtn = c.link && c.link.trim()
+      ? `<a href="${c.link}" target="_blank" class="course-btn" style="margin-bottom:8px;">Visit ${c.provider || 'Institution'} ↗</a>`
+      : '';
+    const waText = encodeURIComponent(`Hi DocTailor, I completed a course from ${c.provider} and want to update my CV.`);
+    return `
+      <div class="course-card">
+        <div style="margin-bottom:14px;">
+          <span class="course-badge">${c.category || 'Skills'}</span>${freeBadge}
+        </div>
+        <div class="course-provider" style="font-size:18px;font-family:'Playfair Display',serif;font-weight:700;color:#fff;margin-bottom:10px;">${c.provider || ''}</div>
+        <div style="font-size:13px;color:#3a5a7a;font-weight:600;margin-bottom:16px;">💰 ${costLabel}</div>
+        <div>
+          ${linkBtn}
+          <a href="https://wa.me/27613845288?text=${waText}" target="_blank" class="course-btn">Update My CV After Completion</a>
+        </div>
+      </div>`;
+  }
+
+  async function loadCourses() {
+    const grid = document.getElementById('course-grid');
+    try {
+      const res = await fetch(COURSES_URL);
+      if (!res.ok) throw new Error('fetch failed');
+      const text = await res.text();
+      const courses = parseCSV(text);
+      if (courses.length === 0) throw new Error('empty');
+      grid.innerHTML = courses.map(buildCourseCard).join('') + courseCtaCard;
+      coursesLoaded = true;
+    } catch (e) {
+      // Fallback sample courses
+      grid.innerHTML = `
+        <div class="course-card">
+          <div style="margin-bottom:14px;"><span class="course-badge">Admin</span><span class="course-free-badge">FREE</span></div>
+          <div style="font-size:18px;font-family:'Playfair Display',serif;font-weight:700;color:#fff;margin-bottom:10px;">National School of Government</div>
+          <div style="font-size:13px;color:#3a5a7a;font-weight:600;margin-bottom:16px;">💰 Free</div>
+          <div><a href="https://www.thensg.gov.za" target="_blank" class="course-btn" style="margin-bottom:8px;">Visit NSG ↗</a>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20completed%20a%20course%20from%20NSG%20and%20want%20to%20update%20my%20CV." target="_blank" class="course-btn">Update My CV After Completion</a></div>
+        </div>
+        <div class="course-card">
+          <div style="margin-bottom:14px;"><span class="course-badge">Finance</span><span class="course-free-badge">FREE</span></div>
+          <div style="font-size:18px;font-family:'Playfair Display',serif;font-weight:700;color:#fff;margin-bottom:10px;">Alison Online Learning</div>
+          <div style="font-size:13px;color:#3a5a7a;font-weight:600;margin-bottom:16px;">💰 Free</div>
+          <div><a href="https://alison.com" target="_blank" class="course-btn" style="margin-bottom:8px;">Visit Alison ↗</a>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20completed%20a%20course%20from%20Alison%20and%20want%20to%20update%20my%20CV." target="_blank" class="course-btn">Update My CV After Completion</a></div>
+        </div>
+        <div class="course-card">
+          <div style="margin-bottom:14px;"><span class="course-badge">HR</span><span class="course-free-badge">FREE</span></div>
+          <div style="font-size:18px;font-family:'Playfair Display',serif;font-weight:700;color:#fff;margin-bottom:10px;">UNISA Short Courses</div>
+          <div style="font-size:13px;color:#3a5a7a;font-weight:600;margin-bottom:16px;">💰 From R500</div>
+          <div><a href="https://www.unisa.ac.za/shortcourses" target="_blank" class="course-btn" style="margin-bottom:8px;">Visit UNISA ↗</a>
+          <a href="https://wa.me/27613845288?text=Hi%20DocTailor%2C%20I%20completed%20a%20UNISA%20short%20course%20and%20want%20to%20update%20my%20CV." target="_blank" class="course-btn">Update My CV After Completion</a></div>
+        </div>
+        ${courseCtaCard}`;
+      coursesLoaded = true;
+    }
+  }
 
   // ── PRICING LOGIC ──
   // 1. Go to formspree.io and sign up (free)
